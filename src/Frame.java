@@ -150,8 +150,13 @@ public class Frame extends JFrame {
                     game.incrementAttempts();
 
                 draw.repaint();
+                
+                int counter = 0;
+                for(int i = 0; i < game.getWordLength(); i ++)
+                    if(game.getWord().charAt(i) != wordLabels[i].getText().charAt(0))
+                        counter ++;
 
-                if(game.getAttempts() == 6) {
+                if(game.getAttempts() == 6 || counter == 0) {
                     for(int i = 0; i < 26; i ++) {
                         lettersButtons[i].setEnabled(false);
                         lettersButtons[i].setForeground(Color.LIGHT_GRAY);
@@ -162,6 +167,24 @@ public class Frame extends JFrame {
                     guessButton.setEnabled(false);
                     guessButton.setForeground(Color.LIGHT_GRAY);
                     guessButton.setBackground(Color.LIGHT_GRAY);
+
+                    if(counter == 0) {
+                        ImageIcon icon = new ImageIcon("res/check.png");
+                        int choice = JOptionPane.showConfirmDialog(null, "Vuoi iniziare una nuova partita?",
+                        "Hai vinto!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
+                        if(choice == JOptionPane.YES_OPTION) {
+                            dispose();
+                            new Frame();
+                        }
+                    } else {
+                        ImageIcon icon = new ImageIcon("res/cross.png");
+                        int choice = JOptionPane.showConfirmDialog(null, "Vuoi iniziare una nuova partita?",
+                        "Hai perso!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
+                        if(choice == JOptionPane.YES_OPTION) {
+                            dispose();
+                            new Frame();
+                        }
+                    }
                 }
             }
         }
