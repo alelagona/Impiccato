@@ -30,7 +30,7 @@ public class Frame extends JFrame {
         menuBar = new JMenuBar();
         this.setJMenuBar(menuBar);
     
-        gameMenu = new JMenu("Gioco");
+        gameMenu = new JMenu("...");
         menuBar.add(gameMenu);
     
         newGameItem = new JMenuItem("Nuova partita");
@@ -136,18 +136,33 @@ public class Frame extends JFrame {
                 
                 for(int i = 0; i < 26; i ++)
                     if(lettersButtons[i].getText().equals(e.getActionCommand())) {
-                        lettersButtons[i].setEnabled(false);
                         for(int j = 1; j < (game.getWordLength() - 1); j ++)
-                            if(lettersButtons[i].getText().charAt(0) == game.getWord().charAt(j)) {
-                                wordLabels[j].setText(lettersButtons[i].getText());
-                                guess = true;
-                            }
+                        if(lettersButtons[i].getText().charAt(0) == game.getWord().charAt(j)) {
+                            wordLabels[j].setText(lettersButtons[i].getText());
+                            guess = true;
+                        }
+                        lettersButtons[i].setEnabled(false);
+                        lettersButtons[i].setForeground(Color.LIGHT_GRAY);
+                        lettersButtons[i].setBackground(Color.LIGHT_GRAY);
                     }
 
                 if(!guess)
                     game.incrementAttempts();
 
                 draw.repaint();
+
+                if(game.getAttempts() == 6) {
+                    for(int i = 0; i < 26; i ++) {
+                        lettersButtons[i].setEnabled(false);
+                        lettersButtons[i].setForeground(Color.LIGHT_GRAY);
+                        lettersButtons[i].setBackground(Color.LIGHT_GRAY);
+                    }
+                    guessField.setEditable(false);
+                    guessField.setFocusable(false);
+                    guessButton.setEnabled(false);
+                    guessButton.setForeground(Color.LIGHT_GRAY);
+                    guessButton.setBackground(Color.LIGHT_GRAY);
+                }
             }
         }
     }
