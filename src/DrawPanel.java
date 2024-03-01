@@ -2,10 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
-public class Draw extends JPanel {
+public class DrawPanel extends JPanel {
     private Game game;
 
-    public Draw(Game game) {
+    public DrawPanel(Game game) {
         this.game = game;
     }
 
