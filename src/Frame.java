@@ -104,7 +104,6 @@ public class Frame extends JFrame {
         guessButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
         guessButton.setBackground(Color.WHITE);
         guessButton.addActionListener(new ButtonsListener());
-        guessButton.addKeyListener(new KeyboardListener());
         guessPanel2.add(guessButton);
         
         centerPanel = new JPanel();
