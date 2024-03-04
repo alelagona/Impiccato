@@ -12,7 +12,7 @@ public class Frame extends JFrame {
     private JLabel titleLabel;
     private JPanel bottomPanel, centerPanel, lettersPanel;
     private JPanel guessPanel, guessPanel1, guessPanel2, wordPanel;
-    private DrawPanel drawPanel;
+    private Draw drawPanel;
     private JTextField guessField;
     private JButton guessButton;
     private JButton[] lettersButtons;
@@ -110,7 +110,7 @@ public class Frame extends JFrame {
         centerPanel.setLayout(new GridLayout(1, 2));
         c.add(centerPanel);
 
-        drawPanel = new DrawPanel(game);
+        drawPanel = new Draw(game);
         centerPanel.add(drawPanel);
 
         lettersPanel = new JPanel() {
