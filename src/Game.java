@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 public class Game {
     private String word;
     private int attempts;
+    private final int numberOfWords = 150;
     
     Game() {
         try {
@@ -12,7 +13,7 @@ public class Game {
             BufferedReader fRead = new BufferedReader(fIn);
             Random r = new Random();
 
-            int n = r.nextInt(150);
+            int n = r.nextInt(numberOfWords);
             for(int i = 0; i != n; i ++)
                 fRead.readLine();
             word = fRead.readLine();
@@ -23,7 +24,7 @@ public class Game {
             JOptionPane.showMessageDialog(null, "words.txt not found", "Error!", JOptionPane.ERROR_MESSAGE);
         }
         catch(IOException e1) {
-            JOptionPane.showMessageDialog(null, "error while reading words.txt", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error while reading words.txt", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }
 

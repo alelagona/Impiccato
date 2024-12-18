@@ -215,6 +215,8 @@ public class Frame extends JFrame {
                         if(choice == JOptionPane.YES_OPTION) {
                             dispose();
                             new Frame();
+                        } else {
+                            System.exit(0);
                         }
                     } else {
                         ImageIcon icon = new ImageIcon("res/cross.png");
@@ -224,6 +226,8 @@ public class Frame extends JFrame {
                         if(choice == JOptionPane.YES_OPTION) {
                             dispose();
                             new Frame();
+                        }  else {
+                            System.exit(0);
                         }
                     }
                 }
